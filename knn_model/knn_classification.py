@@ -14,7 +14,7 @@ def main():
     knn_classifier = Knn("diabetes.csv")
 
     # Set k as 20
-    knn_classifier.set_k(5)
+    knn_classifier.set_k(20)
     knn_classifier.get_confusion_matrix()
 
 main()
