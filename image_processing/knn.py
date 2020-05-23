@@ -11,11 +11,12 @@ import pandas as pd
 import operator
 import tensorflow.keras.datasets.mnist as data_set_mnist
 import sys
+import cv2
 
 
 # Knn class
 class Knn(object):
-    def __init__(self, k=30):
+    def __init__(self, k=100):
         """
         INPUT: data set path & K
         OUTPUT: Knn instance
@@ -211,7 +212,7 @@ class Knn(object):
             data = self.y_data[element]
             results[data] += 1
 
-
+        print(results)
         index, value = max(enumerate(results), key=operator.itemgetter(1))
 
         return int(index)
