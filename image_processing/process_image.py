@@ -22,9 +22,9 @@ def center_image(im):
 
 
 knn = Knn()
-knn.set_k(100)
+knn.set_k(70)
 
-im = cv2.imread('28.png')
+im = cv2.imread('14.png')
 gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
 # (2) threshold-inv and morph-open 
 th, threshed = cv2.threshold(gray, 100, 255, cv2.THRESH_OTSU|cv2.THRESH_BINARY_INV)
