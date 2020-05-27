@@ -34,6 +34,7 @@ def getMathAnswer():
 			morphed = cv2.morphologyEx(threshed, cv2.MORPH_OPEN, np.ones((2,2)))
 			# (3) find and filter contours, then draw on src 
 			cnts = cv2.findContours(morphed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
+			res = ''
 
 			for cnt in cnts:
 				x,y,w,h = bbox = cv2.boundingRect(cnt)
@@ -47,6 +48,7 @@ def getMathAnswer():
 					roismall = roismall.flatten()
 					predict = knn.predict(roismall)
 					res += str(predict)
+			# response = jsonify(data = res)
 			return res
 		except:
 			return jsonify(status= 'Failed')
@@ -81,5 +83,4 @@ def addHeaders(response):
     response.headers.add('Access-Control-Expose-Headers', 'Content-Type,Content-Length,Authorization,X-Pagination')
     return response
 
-if __name__ == '__main__':
-    app.run(port = 5000, debug=True)
+app.run(host= '0.0.0.0')
