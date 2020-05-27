@@ -66,7 +66,7 @@ def center_image(im):
     bottom = im[row-2:row, 0:col]
     mean = cv2.mean(bottom)[0]
 
-    bordersize = 150
+    bordersize = 300
     border = cv2.copyMakeBorder(
         im,
         top=bordersize,

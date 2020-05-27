@@ -8,7 +8,7 @@ def center_image(im):
     bottom = im[row-2:row, 0:col]
     mean = cv2.mean(bottom)[0]
 
-    bordersize = 200
+    bordersize = 300
     border = cv2.copyMakeBorder(
         im,
         top=bordersize,
@@ -24,15 +24,11 @@ def center_image(im):
 knn = Knn()
 knn.set_k(70)
 
-im = cv2.imread('28.png')
+im = cv2.imread('6.png')
 gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
 # (2) threshold-inv and morph-open 
 th, threshed = cv2.threshold(gray, 100, 255, cv2.THRESH_OTSU|cv2.THRESH_BINARY_INV)
-cv2.imshow( "Display window", threshed )
-cv2.waitKey(0); 
 morphed = cv2.morphologyEx(threshed, cv2.MORPH_OPEN, np.ones((2,2)))
-cv2.imshow( "Display window", morphed )
-cv2.waitKey(0); 
 # (3) find and filter contours, then draw on src 
 cnts = cv2.findContours(morphed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
 
@@ -42,10 +38,18 @@ for cnt in cnts:
     if  h>28:
         cv2.rectangle(cnt, (x,y), (x+w, y+h), (255, 0, 255), 1, cv2.LINE_AA)
         roi = threshed[y:y+h,x:x+w]
+        cv2.imshow( "Display window", roi )
+        cv2.waitKey(0)
+        cv2.waitKey(0)
         roi = center_image(roi)
+        cv2.imshow( "Display window", roi )
+        cv2.waitKey(0)
+        cv2.waitKey(0)
+        
         roismall = cv2.resize(roi,(28,28))
         cv2.imshow( "Display window", roismall )
-        cv2.waitKey(0); 
+        cv2.waitKey(0)
+        cv2.waitKey(0)
         roismall = roismall.flatten()
         print(knn.predict(roismall))
         
