@@ -49,9 +49,9 @@ class Knn(object):
 
         try:
             (x_train, y_train), (x_test, y_test) = data_set_mnist.keras.datasets.mnist.load_data()
-            x_train = x_train[:40000,:,:]
+            x_train = x_train[:60000,:,:]
             x_test = []
-            y_train = y_train[:40000]
+            y_train = y_train[:60000]
             y_test  = []
         except IOError:
             print ("Error: El archivo no existe")
@@ -135,7 +135,7 @@ class Knn(object):
         OUTPUT: None
         """
         self.k = k
-        print("Testing K = "+str(k))
+        # print("Testing K = "+str(k))
 
 
 

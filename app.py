@@ -14,7 +14,7 @@ CORS(app)
 app.config["DEBUG"] = True
 
 knn = Knn()
-knn.set_k(70)
+knn.set_k(100)
 
 
 @app.route('/getMathAnswer', methods=['POST'])
@@ -24,10 +24,13 @@ def getMathAnswer():
 			data = request.json['base64']
 			imgdata = base64.b64decode(data)
 			filename = 'some_image.png'
-			print(request.json)
+			# print(request.json)
 			with open(filename, 'wb') as f:
 			    f.write(imgdata)
 			im = cv2.imread(filename)
+			# customHeight = int(request.json['height'])
+			# customHeight = int(customHeight*0.7)
+			# print(customHeight)
 			im = cv2.resize(im,(int(request.json['width']),int(request.json['height'])))
 			gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
 			# (2) threshold-inv and morph-open 
@@ -35,6 +38,7 @@ def getMathAnswer():
 			morphed = cv2.morphologyEx(threshed, cv2.MORPH_OPEN, np.ones((2,2)))
 			# (3) find and filter contours, then draw on src 
 			cnts = cv2.findContours(morphed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
+			res = ''
 
 			for cnt in cnts:
 				x,y,w,h = bbox = cv2.boundingRect(cnt)
@@ -44,11 +48,11 @@ def getMathAnswer():
 					roi = center_image(roi)
 					roismall = cv2.resize(roi,(28,28))
 					# cv2.imshow( "Display window", roismall )
-					cv2.waitKey(0); 
+					# cv2.waitKey(0);
 					roismall = roismall.flatten()
 					predict = knn.predict(roismall)
 					res += str(predict)
-			print(res)
+			# print(res)
 			return res
 		except:
 			return jsonify(status= 'Image processing failed')
@@ -84,4 +88,5 @@ def addHeaders(response):
     return response
 
 if __name__ == '__main__':
-    app.run(port = 5000, debug=True)
+    # app.run(port = 5000, debug=True)
+	app.run(host= '0.0.0.0')
