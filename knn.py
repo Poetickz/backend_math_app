@@ -49,8 +49,8 @@ class Knn(object):
 
         try:
             (x_train, y_train), (x_test, y_test) = data_set_mnist.keras.datasets.mnist.load_data()
-            X_train = X_train[:40000,:,:]
-            X_test = []
+            x_train = x_train[:40000,:,:]
+            x_test = []
             y_train = y_train[:40000]
             y_test  = []
         except IOError:
