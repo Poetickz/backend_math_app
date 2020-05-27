@@ -48,11 +48,12 @@ def getMathAnswer():
 					roismall = roismall.flatten()
 					predict = knn.predict(roismall)
 					res += str(predict)
+			print(res)
 			return res
 		except:
-			return jsonify(status= 'Failed')
+			return jsonify(status= 'Image processing failed')
 	else:
-		return jsonify(status= 'Failed')
+		return jsonify(status= 'Not image fail')
 
 
 
