@@ -24,11 +24,15 @@ def center_image(im):
 knn = Knn()
 knn.set_k(70)
 
-im = cv2.imread('14.png')
+im = cv2.imread('28.png')
 gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
 # (2) threshold-inv and morph-open 
 th, threshed = cv2.threshold(gray, 100, 255, cv2.THRESH_OTSU|cv2.THRESH_BINARY_INV)
+cv2.imshow( "Display window", threshed )
+cv2.waitKey(0); 
 morphed = cv2.morphologyEx(threshed, cv2.MORPH_OPEN, np.ones((2,2)))
+cv2.imshow( "Display window", morphed )
+cv2.waitKey(0); 
 # (3) find and filter contours, then draw on src 
 cnts = cv2.findContours(morphed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
 
