@@ -8,7 +8,7 @@
 # Importing necessary libraries
 import numpy as np
 import operator
-import keras.datasets.mnist as data_set_mnist
+import tensorflow as data_set_mnist
 import sys
 
 
@@ -48,7 +48,7 @@ class Knn(object):
         # Opens file
 
         try:
-            (x_train, y_train), (x_test, y_test) = data_set_mnist.load_data()
+            (x_train, y_train), (x_test, y_test) = data_set_mnist.keras.datasets.mnist.load_data()
 
         except IOError:
             print ("Error: El archivo no existe")
