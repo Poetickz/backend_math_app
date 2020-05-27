@@ -31,7 +31,7 @@ def getMathAnswer():
 			# customHeight = int(request.json['height'])
 			# customHeight = int(customHeight*0.7)
 			# print(customHeight)
-			im = cv2.resize(im,(int(request.json['width']),int(request.json['height'])))
+			im = cv2.resize(im,(int(request.json['width']),int(request.json['height'])), interpolation = cv2.INTER_AREA)
 			gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
 			# (2) threshold-inv and morph-open 
 			th, threshed = cv2.threshold(gray, 100, 255, cv2.THRESH_OTSU|cv2.THRESH_BINARY_INV)
