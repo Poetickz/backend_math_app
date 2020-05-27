@@ -7,7 +7,6 @@
 """
 # Importing necessary libraries
 import numpy as np
-import pandas as pd
 import operator
 import tensorflow.keras.datasets.mnist as data_set_mnist
 import sys
