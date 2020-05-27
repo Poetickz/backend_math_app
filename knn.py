@@ -36,7 +36,7 @@ class Knn(object):
     
 
 
-    def load_data(self, file):
+    def load_data(self):
         """ 
         load data from comma-separated-value (CSV) file and set
         x_data, y_data, y_testing_data, x_testing_data.
