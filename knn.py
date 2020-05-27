@@ -216,7 +216,7 @@ class Knn(object):
 
 
         index, value = max(enumerate(results), key=operator.itemgetter(1))
-
+        print(results)
         return int(index)
 
 

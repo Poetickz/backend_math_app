@@ -24,6 +24,7 @@ def getMathAnswer():
 			data = request.json['base64']
 			imgdata = base64.b64decode(data)
 			filename = 'some_image.png'
+			print(request.json)
 			with open(filename, 'wb') as f:
 			    f.write(imgdata)
 			im = cv2.imread(filename)
