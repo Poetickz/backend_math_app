@@ -14,7 +14,7 @@ import sys
 
 # Knn class
 class Knn(object):
-    def __init__(self, file, k=3):
+    def __init__(self, k=3):
         """
         INPUT: data set path & K
         OUTPUT: Knn instance
