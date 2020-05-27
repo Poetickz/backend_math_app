@@ -20,7 +20,7 @@ knn.set_k(70)
 
 @app.route('/getMathAnswer', methods=['POST'])
 def getMathAnswer():
-	if 'id' in request.json:
+	if 'base64' in request.json:
 		try:
 			data = request.json['base64']
 			imgdata = base64.b64decode(data)
