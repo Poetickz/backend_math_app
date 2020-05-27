@@ -32,7 +32,7 @@ class Knn(object):
         self.k = k
         self.mean = []
         self.std = []
-        self.load_data(file)
+        self.load_data()
     
 
 
