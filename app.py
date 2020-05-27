@@ -15,7 +15,7 @@ CORS(app)
 app.config["DEBUG"] = True
 
 knn = Knn()
-knn.set_k(70) 
+knn.set_k(70)
 
 
 @app.route('/getMathAnswer', methods=['POST'])

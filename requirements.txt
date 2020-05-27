@@ -9,3 +9,4 @@ numpy==1.18.4
 gunicorn
 opencv-contrib-python
 tensorflow==1.7.1
+Pillow
