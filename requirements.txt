@@ -3,7 +3,7 @@ astunparse==1.6.3
 opencv-python
 bcrypt==3.1.7
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Keras-Preprocessing==1.1.2
 numpy==1.18.4
 gunicorn
