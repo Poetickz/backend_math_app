@@ -8,5 +8,5 @@ Keras-Preprocessing==1.1.2
 numpy==1.18.4
 gunicorn
 opencv-contrib-python
-tensorflow==1.7.1
+tensorflow==2.5.3
 Pillow
